@@ -8,5 +8,13 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "sass": "^1.42.1"
+  },
+  "dependencies": {
+    "bulma": "^0.9.3",
+    "concurrently": "^6.2.2"
+  }
 }
