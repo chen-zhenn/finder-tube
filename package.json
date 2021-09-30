@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --watch src/style/sass/main.sass src/style/css/main.css",
+    "tsc": "tsc -w", 
     "server": "lite-server --baseDir='src'",
-    "start": "concurrently \"npm run sass\" \"npm run server\""
+    "dev": "concurrently \"npm run sass\" \"npm run tsc\" \"npm run server\""
   },
   "keywords": [],
   "author": "",
