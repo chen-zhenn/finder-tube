@@ -58,3 +58,12 @@ dist
 *.css.map
 *.sass.map
 *.scss.map
+
+# Typescript config
+tsconfig.json
+
+# Development files
+src/script/js
+src/script/js/**/*
+src/style/css
+src/style/css/**/*
