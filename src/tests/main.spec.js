@@ -28,19 +28,24 @@ describe('App', () => {
 
     describe('Search method', () => {
 
-        let fetchStub,promise,endpoint,params,data
+        let fetchStub,promise,request,headers,endpoint,params,data
+
+        request = {}
+        headers = {}
+        params = {}
 
         endpoint = {
             baseURL: 'https://youtube.googleapis.com/youtube/v3',
             resource: 'search'
         }
 
-        params = {}
-
         // Hook's
         beforeEach(() => {
             fetchStub =  sinon.stub(global, 'fetch')
             promise = fetchStub.returnsPromise()
+            headers.Authorization = '1234'
+            request.method = 'GET'
+            request.headers = headers
             
         })
 
@@ -54,10 +59,11 @@ describe('App', () => {
 
         })
 
-        it('Should receive a valid endpoint to fetch', () => {
-            
-            App.search(endpoint)
-            expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}`)
+
+        it('Should receive key(API key) as key(Authorization)/value(key) in header and a valid endpoint to fetch', () => {
+                    
+            App.search(endpoint, null, request)
+            expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}`, request)
 
         })
 
@@ -68,8 +74,8 @@ describe('App', () => {
                 params.part = 'snippet'
                 params.q = ''
     
-                App.search(endpoint, params)
-                expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}`)    
+                App.search(endpoint, params, request)
+                expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}`, request)    
             })
 
             context("Passing 'type' as optional parameter", () => {
@@ -78,12 +84,12 @@ describe('App', () => {
                 params.q = ''
                 params.type = 'video'
     
-                App.search(endpoint, params)
-                expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}&type=${params.type}`)    
+                App.search(endpoint, params, request)
+                expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}&type=${params.type}`, request)    
             })
         })
 
-        it('Should JSON data from the Promise', () => {
+        it('Should return JSON data from the Promise', () => {
 
             promise.resolves({ data: 'json' })
 
