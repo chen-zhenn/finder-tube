@@ -16,9 +16,9 @@ abstract class App {
         
         const { baseURL, resource } = endpoint
         
-        !params ? fetch(`${baseURL}/${resource}`).then(res => res.json()) : 
-        params.type ? fetch(`${baseURL}/${resource}?part=${params.part}&q=${params.q}&type=${params.type}`).then(res => res.json()) : 
-        fetch(`${baseURL}/${resource}?part=${params.part}&q=${params.q}`).then(res => res.json())
+        return !params ? fetch(`${baseURL}/${resource}`).then(data => data.json()) : 
+        params.type ? fetch(`${baseURL}/${resource}?part=${params.part}&q=${params.q}&type=${params.type}`).then(data => data.json()) : 
+        fetch(`${baseURL}/${resource}?part=${params.part}&q=${params.q}`).then(data => data.json())
 
     }
 }

@@ -28,7 +28,7 @@ describe('App', () => {
 
     describe('Search method', () => {
 
-        let fetchStub,promise,endpoint,params
+        let fetchStub,promise,endpoint,params,data
 
         endpoint = {
             baseURL: 'https://youtube.googleapis.com/youtube/v3',
@@ -40,7 +40,7 @@ describe('App', () => {
         // Hook's
         beforeEach(() => {
             fetchStub =  sinon.stub(global, 'fetch')
-            fetchStub.returnsPromise()
+            promise = fetchStub.returnsPromise()
             
         })
 
@@ -81,8 +81,17 @@ describe('App', () => {
                 App.search(endpoint, params)
                 expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}&type=${params.type}`)    
             })
+        })
 
+        it('Should JSON data from the Promise', () => {
 
+            promise.resolves({ data: 'json' })
+
+            params.part = 'snippet'
+            params.q = ''
+            data = App.search(endpoint, params)
+
+            expect(data.resolveValue).to.be.eql({ data: 'json' })
         })
     })
 })
