@@ -1,0 +1,14 @@
+{
+    "exclude": [
+        "coverage/**",
+        "packages/*/test{,s}/**",
+        "**/*.d.ts",
+        "test{,s}/**",
+        "**/{karma,rollup,webpack}.config.js",
+        "**/.{eslint,mocha}rc.{js,cjs}"
+    ],
+    "reporter": [
+        "text",
+        "html"
+    ]
+}

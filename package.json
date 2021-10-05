@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch src/style/sass/main.sass src/style/css/main.css",
-    "tdd": "./node_modules/.bin/mocha --watch src/tests/**/**.js  --require babel-register",
+    "tdd": "./node_modules/.bin/mocha --watch src/tests/**/**.spec.js  --require babel-register",
     "tsc": "tsc -w",
     "server": "lite-server --baseDir='src'",
+    "test": "./node_modules/.bin/mocha src/tests/**/**.spec.js",
+    "coverage": "nyc --reporter=html --reporter=text npm run test",
     "dev": "concurrently \"npm run sass\" \"npm run tsc\" \"npm run server\""
   },
   "keywords": [],
@@ -15,12 +17,14 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "chai": "^3.5.0",
     "lite-server": "^2.6.1",
     "mocha": "^5.1.1",
     "node-fetch": "^2.1.2",
+    "nyc": "^10.2.0",
     "sinon": "^2.1.0",
     "sinon-chai": "^3.0.0",
     "sinon-stub-promise": "^4.0.0",
