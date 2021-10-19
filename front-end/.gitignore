@@ -63,6 +63,7 @@ dist
 #babel.config.json
 .nycrc.json
 #tsconfig.json
+src/script/ts/config/*
 
 # Development files
 .nyc_output
