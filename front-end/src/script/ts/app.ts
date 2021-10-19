@@ -1,4 +1,8 @@
+import { config } from './config/config.js'
 import { App as app  } from "./index.js"
+
+
+
 
 interface data {
     items: Array<object>
@@ -7,30 +11,33 @@ interface data {
 }
 
 (async function() {
-    console.log('Boot loader from app!')
+    console.log('Boot loader from app!!!...')
 
     const request = {
         method: 'GET',
-        headers: { Authorization: '' }
+        headers: { Authorization: config.api.key }
     }
     
     const endpoint = {
-        baseURL: "https://youtube.googleapis.com/youtube/v3",
-        resource: "search"
+        baseURL: config.server.baseURL,
+        resource: "videos"
     }
     
     const params = {
         part: 'snippet',
         q: 'primata falante',
         type: 'video',
-        key: ''
+        key: config.api.key  
     }
 
     const fetchVideos = app.search(endpoint, params, request)
     let data: data
     
     await fetchVideos
-        .then(response => data = response )
+        .then(response => {
+            console.log(response)
+            data = response
+        })
         .catch(error => data = error)
 })()
 
