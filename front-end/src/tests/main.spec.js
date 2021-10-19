@@ -9,18 +9,18 @@ chai.use(sinonChai)
 sinonStubPromise(sinon)
 global.fetch = fetch
 
-const App = require("../script/js/index.js").App
+const tube = require("../script/js/index.js").Tube
 
-describe('App', () => {
+describe('Finder tube App', () => {
 
     describe('Smoke Test', () => {
 
-        it('Should exist the class App', () => {
-            expect(App).to.be.exist
+        it('Should exist the class Tube', () => {
+            expect(tube).to.be.exist
         })
 
-        it('Should exist the search method in class App', () => {
-            expect(App.search).to.be.exist
+        it('Should exist the search method in class Tube', () => {
+            expect(tube.search).to.be.exist
         })
 
     })
@@ -54,14 +54,14 @@ describe('App', () => {
 
         
         it('Should call a fetch', () => {
-            App.search(endpoint)
+            tube.search(endpoint)
 
         })
 
 
         it('Should receive key(API key) as key(Authorization)/value(key) in header and a valid endpoint to fetch', () => {
                     
-            App.search(endpoint, null, request)
+            tube.search(endpoint, null, request)
             expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}`, request)
 
         })
@@ -74,7 +74,7 @@ describe('App', () => {
                 params.q = ''
                 params.key = '1234'
     
-                App.search(endpoint, params, request)
+                tube.search(endpoint, params, request)
                 expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}&key=${params.key}`, request)    
             })
 
@@ -85,7 +85,7 @@ describe('App', () => {
                 params.type = 'video'
                 params.key = '1234'
     
-                App.search(endpoint, params, request)
+                tube.search(endpoint, params, request)
                 expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}&type=${params.type}&key=${params.key}`, request)    
             })
         })
@@ -96,7 +96,7 @@ describe('App', () => {
 
             params.part = 'snippet'
             params.q = ''
-            data = App.search(endpoint, params)
+            data = tube.search(endpoint, params)
 
             expect(data.resolveValue).to.be.eql({ data: 'json' })
         })

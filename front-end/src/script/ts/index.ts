@@ -9,7 +9,7 @@ interface params {
     key: string
     type: string
 }
-abstract class App {
+abstract class Tube {
     
     public static search(endpoint: endpoint, params: params, request: RequestInit) {
         
@@ -22,4 +22,4 @@ abstract class App {
     }
 }
 
-export { App }
+export { Tube }

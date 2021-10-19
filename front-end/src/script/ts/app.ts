@@ -1,5 +1,5 @@
 import { config } from './config/config.js'
-import { App as app  } from "./index.js"
+import { Tube as tube  } from "./index.js"
 
 
 
@@ -30,7 +30,7 @@ interface data {
         key: config.api.key  
     }
 
-    const fetchVideos = app.search(endpoint, params, request)
+    const fetchVideos = tube.search(endpoint, params, request)
     let data: data
     
     await fetchVideos
