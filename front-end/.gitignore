@@ -60,10 +60,16 @@ dist
 *.scss.map
 
 # Typescript config
-tsconfig.json
+#babel.config.json
+.nycrc.json
+#tsconfig.json
+src/script/ts/config/*
 
 # Development files
-src/script/js/
-src/script/js/**/*
+.nyc_output
+coverage
 src/style/css/
 src/style/css/**/*
+src/script/js/
+src/script/js/**/*
+

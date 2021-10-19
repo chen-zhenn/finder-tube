@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "target": "ES6",
+        // "module": "commonjs",
         "outDir": "src/script/js",
         "noEmitOnError": true,
         "noImplicitAny": true,
