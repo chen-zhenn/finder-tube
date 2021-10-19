@@ -11,7 +11,6 @@ global.fetch = fetch
 
 const App = require("../script/js/index.js").App
 
-
 describe('App', () => {
 
     describe('Smoke Test', () => {
@@ -73,9 +72,10 @@ describe('App', () => {
 
                 params.part = 'snippet'
                 params.q = ''
+                params.key = '1234'
     
                 App.search(endpoint, params, request)
-                expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}`, request)    
+                expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}&key=${params.key}`, request)    
             })
 
             context("Passing 'type' as optional parameter", () => {
@@ -83,9 +83,10 @@ describe('App', () => {
                 params.part = 'snippet'
                 params.q = ''
                 params.type = 'video'
+                params.key = '1234'
     
                 App.search(endpoint, params, request)
-                expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}&type=${params.type}`, request)    
+                expect(fetchStub).to.have.been.calledWith(`${endpoint.baseURL}/${endpoint.resource}?part=${params.part}&q=${params.q}&type=${params.type}&key=${params.key}`, request)    
             })
         })
 
