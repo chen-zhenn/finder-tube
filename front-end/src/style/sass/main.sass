@@ -1,1 +1,112 @@
 @import '../../../node_modules/bulma/bulma'
+
+$height-header: 213px 
+
+.bl
+    &-wrap,
+    &-container
+        &.-fixed
+            position: relative
+    &-wrap
+        padding-right: 1.5em
+        padding-left: 1.5em
+
+    &-container
+        &.-fixed
+
+            @media (min-width: 1441px)
+                width: 1440px
+                margin-right: auto
+                margin-left: auto
+
+    &-header
+        position: sticky
+        display: grid
+        top: 0
+        height: $height-header
+        color: rgba(255, 255, 255, 1)
+
+        &:before,
+        &:after
+            content: ""
+            display: block
+            position: fixed
+            top: 0
+            left: 0
+            width: 100%
+            height: $height-header
+            z-index: -1
+            transition: height ease-in-out .85s
+
+        &:before
+            background-color: rgba(33, 33, 33, 1)
+            background-image: url("https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2574&q=80")  
+            background-repeat: no-repeat
+            background-size: 200%
+            background-position: 50% 30% 
+
+            @media (min-width: 768px)
+                background-size: 100%
+                background-position: 0 39%
+        &:after
+            background-color: rgba(0, 0, 0, .5)
+
+        &.-full
+
+            &:before,
+            &:after
+                height: 100vh
+
+    &-main
+
+.bc
+    &-container
+        
+        &.-image
+            display: block
+
+    &-image
+        object-fit: contain
+
+.header
+    &__section
+
+        &.-branding
+            transform: translate3d(0,9px, 0)
+        &.-search
+            display: grid
+            height: 100%
+            align-items: center
+            transform: translate3d(0, 0, 0)
+            transition: transform ease-in-out .75s .375s
+
+            .-full &
+                transform: translate3d(0, 33px, 0)
+
+.branding
+    display: grid
+    justify-content: center
+    
+    &__container
+        &.-image
+            max-width: 179px
+            margin: 0 auto
+    
+    &__title
+        color: rgba(255, 255, 255, 1)
+        &.-secondary
+            display: none
+
+            @media (min-width: 768px)
+                display: initial
+
+.search
+    &__container
+        &.-input
+
+            @media (min-width: 768px)
+                flex-grow: 1
+    &__button
+        color: rgba(255, 255, 255, 1)
+        border-color: rgba(255, 0, 0, 1)
+        background-color: rgba(255, 0, 0, 1)
