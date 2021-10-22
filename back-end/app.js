@@ -18,7 +18,7 @@ app.get('/videos', async (req, res) => {
   await axios.get(endpoint, request)
     .then(response => res.json(response.data))
     .catch(error => console.log(error))
-  
+
 })
 
 app.listen(port, () => {

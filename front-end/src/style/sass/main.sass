@@ -18,13 +18,13 @@ $height-header: 213px
                 width: 1440px
                 margin-right: auto
                 margin-left: auto
-
     &-header
         position: sticky
         display: grid
         top: 0
         height: $height-header
         color: rgba(255, 255, 255, 1)
+        z-index: 9
 
         &:before,
         &:after
@@ -110,3 +110,14 @@ $height-header: 213px
         color: rgba(255, 255, 255, 1)
         border-color: rgba(255, 0, 0, 1)
         background-color: rgba(255, 0, 0, 1)
+
+.thumbnail
+    display: grid
+    grid-gap: 45px
+    justify-content: center
+
+    &__title
+        overflow: hidden
+        display: -webkit-box
+        -webkit-box-orient: vertical
+        -webkit-line-clamp: 1
