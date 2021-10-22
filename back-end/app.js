@@ -12,7 +12,7 @@ app.get('/videos', async (req, res) => {
   const baseURL = 'https://youtube.googleapis.com/youtube/v3'
   const resource= 'search'  
   const { key, part, type, q } = req.query
-  const endpoint = `${baseURL}/${resource}?part=${part}&q=${q}&key=${key}`
+  const endpoint = `${baseURL}/${resource}?part=${part}&q=${q}&type=${type}&key=${key}`
   const request = JSON.stringify({'Authorization': `${key}`})
 
   await axios.get(endpoint, request)
